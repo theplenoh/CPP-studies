@@ -15,6 +15,7 @@ struct Account
 
 void printMenu();
 void createAccount(Account* [], int*);
+void printAllAccounts(Account* const [], const int);
 
 int main()
 {
@@ -24,6 +25,8 @@ int main()
     printMenu();
 
     createAccount(accList, &numOfRows);
+
+    printAllAccounts(accList, numOfRows);
 
     return 0;
 }
@@ -52,4 +55,14 @@ void createAccount(Account* list[], int *row)
     cin>>list[*row]->balance;
 
     (*row)++;
+}
+void printAllAccounts(Account* const list[], const int row)
+{
+    cout<<"# Print All Accounts"<<endl;
+    for(int i=0; i<row; i++)
+    {
+        cout<<"Account ID: "<<list[i]->accID<<endl;
+        cout<<"Customer name: "<<list[i]->customerName<<endl;
+        cout<<"Balance: "<<list[i]->balance<<endl;
+    }
 }
