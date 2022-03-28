@@ -100,7 +100,7 @@ void searchForRecord(Account* list[], const int row)
     cout<<"# Search Result"<<endl;
     for(int i=0; i<row; i++)
     {
-        if(!strcmp(list[i]->customerName, searchWord), searchWord)
+        if(!strcmp(list[i]->customerName, searchWord))
             cout<<i<<". "<<list[i]->accID<<" "<<list[i]->customerName<<endl;
     }
 }
