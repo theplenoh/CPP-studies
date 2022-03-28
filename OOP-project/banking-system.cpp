@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -14,6 +15,7 @@ struct Account
 
 void printMenu();
 void createAccount(Account* [], int*);
+void searchForRecord(Account* [], const int);
 void printAllAccounts(Account* [], const int);
 void freeAllRecords(Account* [], const int);
 
@@ -22,10 +24,40 @@ int main()
     Account* accList[LIST_SZ];
     int numOfRows = 0;
 
-    printMenu();
 
-    createAccount(accList, &numOfRows);
-    printAllAccounts(accList, numOfRows);
+    printMenu();
+    while(true)
+    {
+        int choice;
+
+        cout<<">> ";
+        cin>>choice;
+
+        switch(choice)
+        {
+            case 1:
+                printMenu();
+                break;
+            case 2:
+                createAccount(accList, &numOfRows);
+                break;
+            case 3:
+            case 4:
+            case 5:
+                searchForRecord(accList, numOfRows);
+                break;
+            case 6:
+                printAllAccounts(accList, numOfRows);
+                break;
+            case 7:
+                cout<<"Exiting the program."<<endl;
+                freeAllRecords(accList, numOfRows);
+                return 0;
+                break;
+            default:
+                cout<<"Error - an exception!"<<endl;
+        }
+    }
 
     freeAllRecords(accList, numOfRows);
 
@@ -39,8 +71,9 @@ void printMenu()
     cout<<"2. Create an account"<<endl;
     cout<<"3. Deposit"<<endl;
     cout<<"4. Withdraw"<<endl;
-    cout<<"5. Print the whole list of accounts"<<endl;
-    cout<<"6. Exit this program"<<endl;
+    cout<<"5. Search for an account by customer name"<<endl;
+    cout<<"6. Print the whole list of accounts"<<endl;
+    cout<<"7. Exit this program"<<endl;
     cout<<"======================================"<<endl;
 }
 void createAccount(Account* list[], int *row)
@@ -56,6 +89,20 @@ void createAccount(Account* list[], int *row)
     cin>>list[*row]->balance;
 
     (*row)++;
+}
+void searchForRecord(Account* list[], const int row)
+{
+    char searchWord[20];
+
+    cout<<"Search word: ";
+    cin>>searchWord;
+
+    cout<<"# Search Result"<<endl;
+    for(int i=0; i<row; i++)
+    {
+        if(!strcmp(list[i]->customerName, searchWord), searchWord)
+            cout<<i<<". "<<list[i]->accID<<" "<<list[i]->customerName<<endl;
+    }
 }
 void printAllAccounts(Account* list[], const int row)
 {
