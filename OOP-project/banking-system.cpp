@@ -58,6 +58,7 @@ int main()
                 break;
             default:
                 cout<<"Error - an exception!"<<endl;
+                return 1;
         }
     }
 
