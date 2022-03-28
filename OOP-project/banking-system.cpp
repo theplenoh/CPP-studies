@@ -113,8 +113,10 @@ void depositToAccount(Account* list[], const int row)
         {
             list[i]->balance += money;
             cout<<money<<" is deposited to an account with ID: "<<list[i]->accID<<endl;
+            return;
         }
     }
+    cout<<"Invalid account ID"<<endl;
 }
 void withdrawFromAccount(Account* list[], const int row)
 {
@@ -131,10 +133,17 @@ void withdrawFromAccount(Account* list[], const int row)
     {
         if(accID == list[i]->accID)
         {
+            if(list[i]->balance < money)
+            {
+                cout<<"Low balance"<<endl;
+                return;
+            }
             list[i]->balance -= money;
             cout<<money<<" is withdrawn from an account with ID: "<<list[i]->accID<<endl;
+            return;
         }
     }
+    cout<<"Invalid account ID"<<endl;
 }
 void searchForRecord(Account* list[], const int row)
 {
