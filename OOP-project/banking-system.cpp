@@ -16,6 +16,7 @@ struct Account
 void printMenu();
 void createAccount(Account* [], int*);
 void depositToAccount(Account* [], const int);
+void withdrawFromAccount(Account* [], const int);
 void searchForRecord(Account* [], const int);
 void printAllAccounts(Account* [], const int);
 void freeAllRecords(Account* [], const int);
@@ -45,6 +46,8 @@ int main()
                 depositToAccount(accList, numOfRows);
                 break;
             case 4:
+                withdrawFromAccount(accList, numOfRows);
+                break;
             case 5:
                 searchForRecord(accList, numOfRows);
                 break;
@@ -110,6 +113,26 @@ void depositToAccount(Account* list[], const int row)
         {
             list[i]->balance += money;
             cout<<money<<" is deposited to an account with ID: "<<list[i]->accID<<endl;
+        }
+    }
+}
+void withdrawFromAccount(Account* list[], const int row)
+{
+    int accID;
+    int money;
+
+    cout<<"# Withdraw from account"<<endl;
+    cout<<"Account ID: ";
+    cin>>accID;
+    cout<<"Money: ";
+    cin>>money;
+
+    for(int i=0; i<row; i++)
+    {
+        if(accID == list[i]->accID)
+        {
+            list[i]->balance -= money;
+            cout<<money<<" is withdrawn from an account with ID: "<<list[i]->accID<<endl;
         }
     }
 }
