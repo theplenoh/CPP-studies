@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -15,7 +14,8 @@ struct Account
 
 void printMenu();
 void createAccount(Account* [], int*);
-void printAllAccounts(Account* const [], const int);
+void printAllAccounts(Account* [], const int);
+void freeAllRecords(Account* [], const int);
 
 int main()
 {
@@ -25,8 +25,9 @@ int main()
     printMenu();
 
     createAccount(accList, &numOfRows);
-
     printAllAccounts(accList, numOfRows);
+
+    freeAllRecords(accList, numOfRows);
 
     return 0;
 }
@@ -56,7 +57,7 @@ void createAccount(Account* list[], int *row)
 
     (*row)++;
 }
-void printAllAccounts(Account* const list[], const int row)
+void printAllAccounts(Account* list[], const int row)
 {
     cout<<"# Print All Accounts"<<endl;
     for(int i=0; i<row; i++)
@@ -65,4 +66,9 @@ void printAllAccounts(Account* const list[], const int row)
         cout<<"Customer name: "<<list[i]->customerName<<endl;
         cout<<"Balance: "<<list[i]->balance<<endl;
     }
+}
+void freeAllRecords(Account* list[], const int row)
+{
+    for(int i=0; i<row; i++)
+        delete list[i];
 }
