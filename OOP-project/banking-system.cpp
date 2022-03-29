@@ -18,7 +18,7 @@ void createAccount(Account* [], int*);
 void depositToAccount(Account* [], const int);
 void withdrawFromAccount(Account* [], const int);
 void searchForRecord(Account* [], const int);
-void printAllAccounts(Account* [], const int);
+void printAllAccounts(const Account* const [], const int);
 void freeAllRecords(Account* [], const int);
 
 int main()
@@ -159,7 +159,7 @@ void searchForRecord(Account* list[], const int row)
             cout<<i<<". "<<list[i]->accID<<" "<<list[i]->customerName<<endl;
     }
 }
-void printAllAccounts(Account* list[], const int row)
+void printAllAccounts(const Account* const list[], const int row)
 {
     cout<<"# Print All Accounts"<<endl;
     for(int i=0; i<row; i++)
