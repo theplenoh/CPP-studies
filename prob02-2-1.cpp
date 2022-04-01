@@ -4,13 +4,12 @@ using namespace std;
 int main()
 {
     const int num = 12;
+    const int* pNum = &num;
 
-    const int* nPtr = &num;
+    const int* &refPNum = pNum;
 
-    const int* &refPtr = nPtr;
-
-    cout << *nPtr << endl;
-    cout << *refPtr << endl;
+    cout << *pNum << endl;
+    cout << *refPNum << endl;
 
     return 0;
 }

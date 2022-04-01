@@ -5,7 +5,6 @@ void Increment(int &num)
 {
     num++;
 }
-
 void Negate(int &num)
 {
     num *= -1;
@@ -13,14 +12,14 @@ void Negate(int &num)
 
 int main()
 {
-    int numA = 4;
-    int numB = 6;
+    int num = 4;
+    cout << num << endl;
 
-    Increment(numA);
-    Negate(numB);
+    Increment(num);
+    cout << "After `Increment(num)`: " << num << endl;
 
-    cout<<numA<<endl;
-    cout<<numB<<endl;
+    Negate(num);
+    cout << "After `Negate(num)`: " << num << endl;
 
     return 0;
 }

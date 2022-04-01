@@ -8,8 +8,8 @@ int main()
     int** dptr=&ptr;
 
     int &ref=num;
-    int* (&pref)=ptr;
-    int** (&dpref)=dptr;
+    int* &pref=ptr;
+    int** &dpref=dptr;
 
     cout<<ref<<endl;
     cout<<*pref<<endl;
